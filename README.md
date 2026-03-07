@@ -24,11 +24,14 @@ Statistics and Machine Learning Toolbox (essential)
 Optimization Toolbox (recommended, but not required)
 
 # Installation and Setup
-1. Download the Code
+
+1.Download the Code
  `git clone (https://github.com/lan1041/SCSO2)
 cd SCSO`
-2. Add to MATLAB Path
-Open matlab and run the algorithm
+
+2.Add to matlab path
+
+Open matlab and run the algorithm.
 
 # Test with Synthetic Data
 Run the following command to test the code with the provided synthetic data
@@ -45,19 +48,21 @@ Expected output: The script should execute without errors,and store in table for
 
 # Inversion Workflow
 
-1. Parameter Configuration
+1.Parameter Configuration
 
 Before running the inversion, you need to set the following parameters according to your specific requirements:
 `vp;thk;density;vs;` 
 You can modify those parameters on demand.
   
- 2. Running the algorithm
+2.Running the algorithm
   
- 3. Obtaining inversion results
+3.Obtaining inversion results
+
 After inversion, you can extract the following results:`    xlswrite('fitbest.xlsx', fit_best,'sheet1',str);
     xlswrite('vs.xlsx', vs_best,'sheet1',str);
     xlswrite('thk.xlsx', depth_best,'sheet1',str);
     xlswrite('fr_best.xlsx', fr_best,'sheet1',str);`
 
-4. Plotting in Origin
+4.Plotting in Origin
+
 You can import the exported text files into Origin for professional publication-quality figures to evaluate the feasibility of the algorithm.
