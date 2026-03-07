@@ -48,7 +48,8 @@ Expected output: The script should execute without errors,and store in table for
 1. Parameter Configuration
 
 Before running the inversion, you need to set the following parameters according to your specific requirements:
-` vp;thk;density;vs;` You can modify those parameters on demand.
+`vp;thk;density;vs;` 
+You can modify those parameters on demand.
   
  2. Running the algorithm
   
