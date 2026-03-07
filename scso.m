@@ -5,7 +5,7 @@ tic;
 tn=1;
 nnn=10;
 while(tn<=nnn)
-    %% 1.模型建立
+    %% 1.
     vp=[521 860 650 1327];
     thk=[2 3 4];
     density=[2000 2000 2000 2000];
@@ -15,28 +15,25 @@ while(tn<=nnn)
     interval=2;
     frequency=(5:interval:100);
     Frel=length(frequency);
-    %% 2.频散曲线计算-得到标准曲线
-    vr_real=mmat(thk,density,vp,vs,frequency,'R');%正演获得相速度
+    %% 2.
+    vr_real=mmat(thk,density,vp,vs,frequency,'R');
     Vvv=vr_real+2*(0.5-rand(size(vr_real))).*vr_real*0.1;
     vr_real=Vvv;
-    %%
-    %% 3.初始化种群-为算法提供初始值模型
-    %%
-    popsize=30;%沙丘猫数
-    iter=100;%迭代次数
-    %3.1初始化地层信息
-    per=0.5;%搜索区间
-    %初始化地层厚度thk
+    %% 3.
+    popsize=30;
+    iter=100;
+    %3.1
+    per=0.5;
+    %thk
     thklow=thk-thk*per;
     thkup=thk+thk*per;
-    thkf=thklow+rand(popsize,thkl).*(thkup-thklow);%初始地层厚度
-    %初始化vs波速度
+    thkf=thklow+rand(popsize,thkl).*(thkup-thklow);
+    %vs
     vslow=vs-vs*per;
     vsup=vs+vs*per;
-    vsf=vslow+rand(popsize,vsl).*(vsup-vslow);%初始vs波速度
+    vsf=vslow+rand(popsize,vsl).*(vsup-vslow);
     fit_best=zeros(popsize,1);
     fit_start=fit_best;
-    %计算出初始种群每个个体的目标函数值及最优值
     parfor i=1:popsize
         temp1=mmat(thkf(i,:),density,vp,vsf(i,:),frequency,'R');
         pbtemp=temp1;
@@ -49,10 +46,8 @@ while(tn<=nnn)
     tempnul=fit_best;
     adab=fit_best;
     while(jkj<=iter)
-        %% 4.1 第1阶段
-        %更新沙丘猫位置
+        %% 4.1
         parfor j=1:popsize
-            %%计算沙丘猫位置
             tempn=round(1+(popsize-1).*rand);
             adab(j)=tempn;
             tempn1=mmat(thkf(adab(j),:),density,vp,vsf(adab(j),:),frequency,'R');
@@ -78,7 +73,6 @@ while(tn<=nnn)
                 vstemp(jj,:)=vslow+rand*(vsup-vslow);
             end
         end
-        %计算适应度值替换沙丘猫位置
         parfor aa=1:popsize
             temp2=mmat(thktemp(aa,:),density,vp,vstemp(aa,:),frequency,'R');
             pbtemp2=temp2;
@@ -91,8 +85,7 @@ while(tn<=nnn)
                 fit_start(aba)=fit_temp(aba);
             end
         end
-        %% 4.2第2阶段
-        % 更新沙丘猫位置
+        %% 4.2
         rn=0.02*(1-jkj/iter);
         for k=1:popsize
             thktemp(k,:)=thkf(k,:)+rn*(2*rand-1)*thkf(k,:);
@@ -120,7 +113,7 @@ while(tn<=nnn)
                 fit_start(aaaa)=fit_temp(aaaa);
             end
         end
-        [fitbest,index]=min(fit_start);%全局最优误差
+        [fitbest,index]=min(fit_start);
         fit_best(jkj)=fitbest;
         vs_best=vsf(index,:);
         depth_best=thkf(index,:);
