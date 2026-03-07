@@ -25,14 +25,14 @@ Optimization Toolbox (recommended, but not required)
 
 # Installation and Setup
 1. Download the Code
- `git clone (https://github.com/lan1041/SCSO)
+ `git clone (https://github.com/lan1041/SCSO2)
 cd SCSO`
 2. Add to MATLAB Path
-Open MATLAB and run the following command in the command window:
-`addpath(genpath('full/path/to/SCSO'));
-savepath; `
+Open matlab and run the algorithm
+
 # Test with Synthetic Data
-Run the following command to test the code with the provided synthetic data:`test_synthetic`
+Run the following command to test the code with the provided synthetic data
+
 This test script will:
 
 - Load the synthetic  data:`test_synthetic`
@@ -42,19 +42,21 @@ This test script will:
 - Output the inverted layer thicknesses 、shear wave velocities and so on
 
 Expected output: The script should execute without errors,and store in table form in a folder.
+
 # Inversion Workflow
+
 1. Parameter Configuration
+
 Before running the inversion, you need to set the following parameters according to your specific requirements:
-`    vp=[521 860 650 1327];
-    thk=[2 3 4];
-    density=[2000 2000 2000 2000];
-    vs=[160 250 200 400];`
-   You can modify those parameters on demand:vp,thk, density,vs.
-   2. Running the algorithm
-   3. Obtaining inversion results
+` vp;thk;density;vs;` You can modify those parameters on demand.
+  
+ 2. Running the algorithm
+  
+ 3. Obtaining inversion results
 After inversion, you can extract the following results:`    xlswrite('fitbest.xlsx', fit_best,'sheet1',str);
     xlswrite('vs.xlsx', vs_best,'sheet1',str);
     xlswrite('thk.xlsx', depth_best,'sheet1',str);
     xlswrite('fr_best.xlsx', fr_best,'sheet1',str);`
+
 4. Plotting in Origin
 You can import the exported text files into Origin for professional publication-quality figures to evaluate the feasibility of the algorithm.
