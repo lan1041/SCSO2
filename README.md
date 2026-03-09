@@ -26,8 +26,7 @@ Optimization Toolbox (recommended, but not required)
 # Installation and Setup
 
 1.Download the Code
- `git clone (https://github.com/lan1041/SCSO2)
-cd SCSO`
+ `scso.m`
 
 2.Add to matlab path
 
@@ -44,7 +43,7 @@ This test script will:
 
 - Output the inverted layer thicknesses 、shear wave velocities and so on
 
-Expected output: The script should execute without errors,and store in table form in a folder.
+Expected output: The script should execute without errors,and store in table form in a folder. The results run from the scso algorithm with `test_synthetic` are listed in `fitbest.xlsx`, `fr_best.xlsx`, `thk.xlsx` and `vs.xlsx`.
 
 # Inversion Workflow
 
